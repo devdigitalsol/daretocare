@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+$primary: #7b2c7d;
+$primary-dark: #4b046e;
+$primary-light: #f9d2e5;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  background: #f7f7fc;
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+}
+#root {
+  height: 100%;
+  position: relative;
+}
+.wrapper {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+.login-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  form {
+    max-width: 340px;
+  }
+}
+.form-group {
+  margin-bottom: 1rem;
+  .form-control {
+    border: 1px solid $primary;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+.btn {
+  background: $primary-dark;
+  color: #fff;
+  border: 1px solid $primary;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  pointer-events: all;
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+.intro-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 1rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 2rem;
+  h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+  }
+  label {
+    position: relative;
+    padding-left: 28px;
+    font-size: 1rem;
+    font-weight: normal;
+    input[type="checkbox"] {
+      opacity: 0;
+      position: absolute;
+      left: -9999px;
+    }
+    .checkboxIcon {
+      width: 20px;
+      height: 20px;
+      border: 1px solid $primary-dark;
+      background-color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 2px;
+    }
+    input[type="checkbox"]:checked + .checkboxIcon {
+      background-color: rgb(75, 4, 110);
+      background-color: linear-gradient(
+        90deg,
+        rgba(75, 4, 110, 1) 0%,
+        rgba(123, 44, 125, 1) 100%
+      );
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0yMSA2LjI4NWwtMTEuMTYgMTIuNzMzLTYuODQtNi4wMTggMS4zMTktMS40OSA1LjM0MSA0LjY4NiA5Ljg2NS0xMS4xOTYgMS40NzUgMS4yODV6Ii8+PC9zdmc+");
+      background-position: center center;
+      background-size: 18px 18px;
+    }
+  }
+}
