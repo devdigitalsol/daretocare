@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import AppContext from "../context/AppContext";
 const Login = () => {
   let history = useHistory();
-  const { isAuth, setIsAuth, setIsAdmin, setCurrentUser } =
-    useContext(AppContext);
+  const { isAuth, setCurrentUser } = useContext(AppContext);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {
@@ -56,7 +55,11 @@ const Login = () => {
               autoComplete="off"
             />
           </div>
-          <button type="submit" className="btn">
+          <button
+            type="submit"
+            className="btn"
+            disabled={name.length < 1 || password.length < 1}
+          >
             Login here !
           </button>
         </form>

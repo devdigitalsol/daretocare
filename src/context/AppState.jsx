@@ -6,6 +6,16 @@ const AppState = (props) => {
   const [isAuth, setIsAuth] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [step, setStep] = useState(1);
+  const [defaultLang, setDefaultLang] = useState("english");
+  const [defaultTemp, setDefaultTemp] = useState("");
+
+  const [drData, setDrData] = useState({
+    name: "",
+    profession: "",
+    designation: "",
+    state: "",
+    city: "",
+  });
   useEffect(() => {
     let getUser = JSON.parse(localStorage.getItem("user"));
     if (getUser == null) {
@@ -28,6 +38,12 @@ const AppState = (props) => {
     setCurrentUser,
     step,
     setStep,
+    drData,
+    setDrData,
+    defaultLang,
+    setDefaultLang,
+    defaultTemp,
+    setDefaultTemp,
   };
   return (
     <AppContext.Provider value={store}>{props.children}</AppContext.Provider>
