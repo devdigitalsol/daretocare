@@ -57,7 +57,12 @@ const CreateTemplate = () => {
     setStep(step - 1);
   };
   const downloadBtn = () => {
-    console.log("asd");
+    const url = viewImg;
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "image.jpg");
+    document.body.appendChild(link);
+    link.click();
   };
 
   return (
@@ -76,11 +81,11 @@ const CreateTemplate = () => {
               {picData && <img src={picData} alt="img" />}
             </div>
             <div id="userInfo">
-              <p id="userName">{drData.name}</p>
-              <p id="userDesignation">{drData.designation}</p>
-              <p id="userState">{drData.state}</p>
-              <p id="userCity">{drData.city}</p>
-              <p id="userCampaign"></p>
+              <div id="userName">{drData.name}</div>
+              <div id="userDesignation">{drData.designation}</div>
+              <div id="userState">{drData.state}</div>
+              <div id="userCity">{drData.city}</div>
+              <div id="userCampaign"></div>
             </div>
           </div>
           <img src={`${path[0].path}/images/ref.png`} alt="img" />
