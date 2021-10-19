@@ -57,7 +57,7 @@ const CreateTemplate = () => {
     setStep(step - 1);
   };
   const downloadBtn = () => {
-    const url = viewImg;
+    const url = "https://www.solmc.in/demo/ios/thumb.png";
     const link = document.createElement("a");
     link.href = url;
     link.target = "_blank";
