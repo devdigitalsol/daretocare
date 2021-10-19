@@ -8,6 +8,8 @@ const AppState = (props) => {
   const [step, setStep] = useState(1);
   const [defaultLang, setDefaultLang] = useState("english");
   const [defaultTemp, setDefaultTemp] = useState("");
+  const [modal, setModal] = useState(false);
+  const [picData, setPicData] = useState("");
 
   const [drData, setDrData] = useState({
     name: "",
@@ -44,6 +46,10 @@ const AppState = (props) => {
     setDefaultLang,
     defaultTemp,
     setDefaultTemp,
+    modal,
+    setModal,
+    picData,
+    setPicData,
   };
   return (
     <AppContext.Provider value={store}>{props.children}</AppContext.Provider>

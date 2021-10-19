@@ -269,6 +269,8 @@ img {
 }
 .create-page {
   background-color: #f8f1f8;
+  display: flex;
+  flex-direction: column;
   #topImg,
   #midImg,
   #refImg {
@@ -384,4 +386,139 @@ img {
   #userCampaign {
     display: none;
   }
+}
+.buttonsAction {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: rgba($primary-dark, 0.5);
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 111;
+  grid-gap: 0.5rem;
+  border-top-left-radius: 1rem;
+  button {
+    background: #fff;
+    color: $primary;
+    font-size: 0.8rem;
+    padding: 0.3rem 1rem;
+    letter-spacing: 0;
+    border-radius: 2rem;
+  }
+}
+.imgPop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 111;
+  background: rgba(0, 0, 0, 0.8);
+  .uploadImgContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 300px;
+    min-width: 300px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    align-items: center;
+    justify-content: center;
+    label.btn {
+      margin-bottom: 0.8rem;
+      input[type="file"] {
+        position: absolute;
+        opacity: 0;
+        left: -9999px;
+      }
+    }
+    .upload-demo-wrap {
+      width: 230px;
+      height: 230px;
+    }
+  }
+  .imageCropContainer {
+    width: 250px;
+    position: relative;
+    box-shadow: 3px 6px 4px -4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background: $primary-light;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 1rem;
+    .upload-msg {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      left: 10px;
+      right: 10px;
+      top: 10px;
+      margin: 0 auto;
+      background: #ebe5e5;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #b8b4b3;
+    }
+    .rotateBtn {
+      padding: 0.6rem 2rem;
+      background: $primary;
+      border: 0;
+      outline: 0;
+      text-align: center;
+      font-size: 1rem;
+      box-shadow: 3px 6px 4px -4px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      line-height: 1;
+    }
+  }
+  .ready .imageCropContainer {
+    padding: 10px 10px 80px 10px;
+  }
+  .cr-slider-wrap {
+    display: none;
+  }
+
+  .cr-slider {
+    display: none;
+  }
+  .btnGrp {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.5rem;
+  }
+}
+
+.upload-demo.ready {
+  .upload-msg {
+    display: none;
+  }
+  .cr-slider-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .cropInfoTxt {
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+  }
+}
+.last-page {
+  background-color: #f8f1f8;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,9 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AppContext from "../context/AppContext";
+import html2canvas from "html2canvas";
 import templateData from "../utils/templateData";
+import Modal from "./Modal";
 
 const CreateTemplate = () => {
-  const { defaultLang, defaultTemp, drData } = useContext(AppContext);
+  const {
+    defaultLang,
+    defaultTemp,
+    drData,
+    setStep,
+    step,
+    modal,
+    setModal,
+    picData,
+  } = useContext(AppContext);
+  const [viewImg, setViewImg] = useState(null);
   let allTemps = [];
 
   const filtered = Object.keys(templateData)
@@ -13,33 +25,105 @@ const CreateTemplate = () => {
       return obj;
     }, {});
   for (let name in filtered) {
-    // console.log(filtered[name]);
     allTemps.push(filtered[name]);
   }
   let path = allTemps[0].filter((item) => {
     return item.lang === defaultLang;
   });
-  // console.log(path[0].path);
+
+  const openModal = () => {
+    setModal(true);
+  };
+
+  const getScreenShot = () => {
+    if (!picData) {
+      alert("Please select image");
+    } else {
+      html2canvas(document.getElementById("fullImg"), {
+        allowTaint: true,
+      })
+        .then((canvas) => {
+          var myImage = canvas.toDataURL("image/jpeg", 0.9);
+          setViewImg(myImage);
+        })
+        .catch(function (error) {
+          console.log(error);
+          alert("oops, something went wrong!", error);
+        });
+    }
+  };
+
+  const backBtn = () => {
+    setStep(step - 1);
+  };
+  const downloadBtn = () => {
+    console.log("asd");
+  };
 
   return (
     <div className="wrapper">
-      <div className="create-page">
-        <img src={`${path[0].path}/images/top.png`} alt="img" />
-        <img src={`${path[0].path}/images/mid.png`} alt="img" />
-        <div className="insertImgContainer">
-          <div id="showImg">
-            <div className="imgOverlay">Selected photo will appear here</div>
+      {viewImg === null && (
+        <div className="create-page" id="fullImg">
+          <img src={`${path[0].path}/images/top.png`} alt="img" />
+          <img src={`${path[0].path}/images/mid.png`} alt="img" />
+          <div className="insertImgContainer">
+            <div id="showImg">
+              {!picData && (
+                <div className="imgOverlay">
+                  Selected photo will appear here
+                </div>
+              )}
+              {picData && <img src={picData} alt="img" />}
+            </div>
+            <div id="userInfo">
+              <p id="userName">{drData.name}</p>
+              <p id="userDesignation">{drData.designation}</p>
+              <p id="userState">{drData.state}</p>
+              <p id="userCity">{drData.city}</p>
+              <p id="userCampaign"></p>
+            </div>
           </div>
-          <div id="userInfo">
-            <p id="userName">{drData.name}</p>
-            <p id="userDesignation">{drData.designation}</p>
-            <p id="userState">{drData.state}</p>
-            <p id="userCity">{drData.city}</p>
-            <p id="userCampaign"></p>
-          </div>
+          <img src={`${path[0].path}/images/ref.png`} alt="img" />
         </div>
-        <img src={`${path[0].path}/images/ref.png`} alt="img" />
+      )}
+
+      {viewImg !== null && (
+        <div className="last-page">
+          <img src={viewImg} className="finalImg" alt="img" id="generatedImg" />
+        </div>
+      )}
+
+      <div className="buttonsAction">
+        {viewImg === null ? (
+          <>
+            <button type="button" onClick={openModal}>
+              Select Photo
+            </button>
+            {picData && (
+              <button type="button" onClick={getScreenShot}>
+                Done
+              </button>
+            )}
+            <button type="button" onClick={backBtn}>
+              Back
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" className="btn" onClick={downloadBtn}>
+              Download
+            </button>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => window.location.reload()}
+            >
+              Reset
+            </button>
+          </>
+        )}
       </div>
+      {modal && <Modal />}
     </div>
   );
 };
