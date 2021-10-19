@@ -19,7 +19,7 @@ const CreateTemplate = () => {
   let path = allTemps[0].filter((item) => {
     return item.lang === defaultLang;
   });
-  console.log(path[0].path);
+  // console.log(path[0].path);
 
   return (
     <div className="wrapper">
