@@ -60,7 +60,8 @@ const CreateTemplate = () => {
     const url = viewImg;
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", "image.jpg");
+    link.target = "_blank";
+    link.setAttribute("download");
     document.body.appendChild(link);
     link.click();
   };
