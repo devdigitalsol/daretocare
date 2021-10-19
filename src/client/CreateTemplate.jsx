@@ -57,11 +57,11 @@ const CreateTemplate = () => {
     setStep(step - 1);
   };
   const downloadBtn = () => {
-    const url = "https://www.solmc.in/demo/ios/thumb.png";
+    const url = viewImg;
     const link = document.createElement("a");
     link.href = url;
     link.target = "_blank";
-    link.setAttribute("download");
+    link.setAttribute("download", "image.jpeg");
     document.body.appendChild(link);
     link.click();
   };
