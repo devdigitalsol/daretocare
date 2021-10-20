@@ -17,6 +17,7 @@ const Template = () => {
     });
     allTemps.push(temp[0]);
   }
+  console.log(allTemps);
 
   const selectTemp = () => {
     let selectedTemp = document

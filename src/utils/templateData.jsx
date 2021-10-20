@@ -1,16 +1,16 @@
 const templateData = {
-  "dare-to-care": [
+  "seizure first aid": [
     {
-      name: "dare-to-care",
+      name: "seizure first aid",
       lang: "english",
-      path: "templates/dare-to-care/english",
+      path: "templates/seizure-first-aid/english",
     },
   ],
-  "dare-to-know": [
+  "know about epilepsy": [
     {
-      name: "dare-to-know",
+      name: "know about epilepsy",
       lang: "english",
-      path: "templates/dare-to-know/english",
+      path: "templates/know-about-epilepsy/english",
     },
   ],
 };
